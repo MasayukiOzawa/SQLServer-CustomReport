@@ -71,7 +71,7 @@ CONVERT(nvarchar, SERVERPROPERTY('ProductVersion'))
           </Border>
         </Style>
       </Body>
-      <Width>374.88286mm</Width>
+      <Width>395.80284mm</Width>
       <Page>
         <PageHeader>
           <Height>51.63441mm</Height>

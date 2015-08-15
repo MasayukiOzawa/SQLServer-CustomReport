@@ -2426,7 +2426,7 @@ OPTION (RECOMPILE)</CommandText>
             <Top>10.39207mm</Top>
             <Left>3.93702mm</Left>
             <Height>12mm</Height>
-            <Width>1123.86865mm</Width>
+            <Width>1123.86864mm</Width>
             <Visibility>
               <ToggleItem>txtIndexUsage</ToggleItem>
             </Visibility>
@@ -2492,7 +2492,7 @@ OPTION (RECOMPILE)</CommandText>
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>82.73754mm</Height>
+        <Height>25.58754mm</Height>
         <Style>
           <Border>
             <Style>None</Style>
