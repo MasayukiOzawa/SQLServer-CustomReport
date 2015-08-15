@@ -482,8 +482,8 @@ CONVERT(nvarchar, SERVERPROPERTY('ProductVersion'))
                         <FontFamily>メイリオ</FontFamily>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Normal</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                        <Color>#000000</Color>
+                        <TextDecoration>Underline</TextDecoration>
+                        <Color>Blue</Color>
                       </Style>
                     </TextRun>
                     <TextRun>
