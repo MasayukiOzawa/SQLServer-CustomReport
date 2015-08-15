@@ -37,16 +37,23 @@ CONVERT(nvarchar, SERVERPROPERTY('ProductVersion'))
     <DataSet Name="InstanceConfiguration">
       <Query>
         <DataSourceName>LocalServer</DataSourceName>
-        <CommandText>SELECT * 
+        <CommandText>SELECT 
+	name, 
+	CASE configuration_id
+		WHEN 503 THEN
+			CONVERT(nvarchar, value) + N' (' + CONVERT(nvarchar, (SELECT max_workers_count FROM sys.dm_os_sys_info)) + N')'
+		ELSE value 
+	END AS value,  
+	CASE configuration_id
+		WHEN 503 THEN
+			CONVERT(nvarchar, value_in_use) + N' (' + CONVERT(nvarchar, (SELECT max_workers_count FROM sys.dm_os_sys_info)) + N')'
+		ELSE value 
+	END AS value_in_use 
 FROM sys.configurations 
 WHERE configuration_id IN (503, 1538, 1539, 1544, 1579, 1581)</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <Fields>
-        <Field Name="configuration_id">
-          <DataField>configuration_id</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
         <Field Name="name">
           <DataField>name</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -55,29 +62,9 @@ WHERE configuration_id IN (503, 1538, 1539, 1544, 1579, 1581)</CommandText>
           <DataField>value</DataField>
           <rd:TypeName>System.Object</rd:TypeName>
         </Field>
-        <Field Name="minimum">
-          <DataField>minimum</DataField>
-          <rd:TypeName>System.Object</rd:TypeName>
-        </Field>
-        <Field Name="maximum">
-          <DataField>maximum</DataField>
-          <rd:TypeName>System.Object</rd:TypeName>
-        </Field>
         <Field Name="value_in_use">
           <DataField>value_in_use</DataField>
           <rd:TypeName>System.Object</rd:TypeName>
-        </Field>
-        <Field Name="description">
-          <DataField>description</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="is_dynamic">
-          <DataField>is_dynamic</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
-        <Field Name="is_advanced">
-          <DataField>is_advanced</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
