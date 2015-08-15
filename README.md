@@ -19,10 +19,16 @@ SQL Server Management Studio のカスタムレポートを使用し、SQL Serve
   - キャッシュ使用状況
   - データキャッシュの比率
   - プランキャッシュの比率
-- バックアップ取得状況
+    - クエリ情報 (TOP 100)
+      - 実行回数の高いクエリ
+      - 平均 CPU 時間の高いクエリ
+      - 平均実行時間の高いクエリ
+      - 平均読み取り回数の高いクエリ
+      - 平均書き込み回数の高いクエリ
+- バックアップ取得状況 (直近 100 件)
 
-# 動作確認状況
-SQL Server 2012 + SQL Server 2014 Management Studio
+# 動作確認環境
+- SQL Server 2012 + SQL Server 2014 Management Studio
 
 # 使用方法
 1.「@Template.rdl」以外の RDL ファイルをダウンロードして同一のフォルダーに配置します。  
