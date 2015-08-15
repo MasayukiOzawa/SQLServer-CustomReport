@@ -508,6 +508,18 @@ OPTION (RECOMPILE)</CommandText>
         </Field>
       </Fields>
     </DataSet>
+    <DataSet Name="DBList">
+      <Query>
+        <DataSourceName>LocalServer</DataSourceName>
+        <CommandText>SELECT name FROM sys.databases where database_id &gt; 4 OPTION (RECOMPILE)</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="name">
+          <DataField>name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
   </DataSets>
   <ReportSections>
     <ReportSection>
@@ -2256,10 +2268,10 @@ OPTION (RECOMPILE)</CommandText>
             </Style>
           </Tablix>
           <Line Name="Line1">
-            <Top>1.7639mm</Top>
+            <Top>1.4464mm</Top>
             <Left>0mm</Left>
             <Height>0mm</Height>
-            <Width>402.15284mm</Width>
+            <Width>395.80284mm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -3811,6 +3823,7 @@ OPTION (RECOMPILE)</CommandText>
                 <Height>24mm</Height>
                 <Width>363.06603mm</Width>
                 <Visibility>
+                  <Hidden>true</Hidden>
                   <ToggleItem>txtFileIOInfo</ToggleItem>
                 </Visibility>
                 <Style>
@@ -4771,6 +4784,7 @@ OPTION (RECOMPILE)</CommandText>
                 <Width>387.56996mm</Width>
                 <ZIndex>1</ZIndex>
                 <Visibility>
+                  <Hidden>true</Hidden>
                   <ToggleItem>txtDatabaseFileUsage</ToggleItem>
                 </Visibility>
                 <Style>
@@ -4872,37 +4886,171 @@ OPTION (RECOMPILE)</CommandText>
                   <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
+              <Textbox Name="txtIndexInfo">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>インデックス使用状況</Value>
+                        <Style>
+                          <FontFamily>メイリオ</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>82.13297mm</Top>
+                <Left>9.38615mm</Left>
+                <Height>6.26459mm</Height>
+                <Width>76.81736mm</Width>
+                <ZIndex>5</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Tablix Name="Tablix11">
+                <TablixBody>
+                  <TablixColumns>
+                    <TablixColumn>
+                      <Width>217.476mm</Width>
+                    </TablixColumn>
+                  </TablixColumns>
+                  <TablixRows>
+                    <TablixRow>
+                      <Height>8.91042mm</Height>
+                      <TablixCells>
+                        <TablixCell>
+                          <CellContents>
+                            <Rectangle Name="Rectangle4">
+                              <ReportItems>
+                                <Textbox Name="name3">
+                                  <CanGrow>true</CanGrow>
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!name.Value</Value>
+                                          <Style>
+                                            <TextDecoration>Underline</TextDecoration>
+                                            <Color>Blue</Color>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <rd:DefaultName>name3</rd:DefaultName>
+                                  <ActionInfo>
+                                    <Actions>
+                                      <Action>
+                                        <Drillthrough>
+                                          <ReportName>IndexUsageInfo</ReportName>
+                                          <Parameters>
+                                            <Parameter Name="DatabaseName">
+                                              <Value>=Fields!name.Value</Value>
+                                            </Parameter>
+                                          </Parameters>
+                                        </Drillthrough>
+                                      </Action>
+                                    </Actions>
+                                  </ActionInfo>
+                                  <Top>0mm</Top>
+                                  <Left>0.65348mm</Left>
+                                  <Height>6mm</Height>
+                                  <Width>38.37074mm</Width>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                </Textbox>
+                              </ReportItems>
+                              <KeepTogether>true</KeepTogether>
+                              <Visibility>
+                                <Hidden>true</Hidden>
+                                <ToggleItem>txtIndexInfo</ToggleItem>
+                              </Visibility>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Rectangle>
+                          </CellContents>
+                        </TablixCell>
+                      </TablixCells>
+                    </TablixRow>
+                  </TablixRows>
+                </TablixBody>
+                <TablixColumnHierarchy>
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
+                </TablixColumnHierarchy>
+                <TablixRowHierarchy>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="詳細9" />
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixRowHierarchy>
+                <DataSetName>DBList</DataSetName>
+                <Top>90.16145mm</Top>
+                <Left>9.51632mm</Left>
+                <Height>8.91042mm</Height>
+                <Width>217.476mm</Width>
+                <ZIndex>6</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                  <TopBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </TopBorder>
+                  <BottomBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </BottomBorder>
+                  <LeftBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </LeftBorder>
+                  <RightBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </RightBorder>
+                </Style>
+              </Tablix>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
             <Top>117.56063mm</Top>
-            <Left>5.92207mm</Left>
-            <Height>81.72046mm</Height>
+            <Left>5.92208mm</Left>
+            <Height>102.26802mm</Height>
             <Width>402.97834mm</Width>
             <ZIndex>8</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
               </Border>
-              <TopBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </TopBorder>
-              <BottomBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </BottomBorder>
-              <LeftBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </LeftBorder>
-              <RightBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </RightBorder>
             </Style>
           </Rectangle>
           <Rectangle Name="Rectangle5">
@@ -4925,7 +5073,7 @@ OPTION (RECOMPILE)</CommandText>
                 </Paragraphs>
                 <rd:DefaultName>Textbox147</rd:DefaultName>
                 <Top>0mm</Top>
-                <Left>1.7561mm</Left>
+                <Left>0.18882mm</Left>
                 <Height>5.55625mm</Height>
                 <Width>37.57083mm</Width>
                 <Style>
@@ -4954,8 +5102,8 @@ OPTION (RECOMPILE)</CommandText>
                     <Style />
                   </Paragraph>
                 </Paragraphs>
-                <Top>58.47013mm</Top>
-                <Left>9.51631mm</Left>
+                <Top>44.44165mm</Top>
+                <Left>7.94904mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>80.78611mm</Width>
                 <ZIndex>1</ZIndex>
@@ -5700,8 +5848,8 @@ OPTION (RECOMPILE)</CommandText>
                   </TablixMembers>
                 </TablixRowHierarchy>
                 <DataSetName>DataCache</DataSetName>
-                <Top>66.49861mm</Top>
-                <Left>9.51632mm</Left>
+                <Top>52.47013mm</Top>
+                <Left>7.94905mm</Left>
                 <Height>18mm</Height>
                 <Width>130.30279mm</Width>
                 <ZIndex>2</ZIndex>
@@ -6070,8 +6218,8 @@ OPTION (RECOMPILE)</CommandText>
                   </Style>
                 </ChartNoDataMessage>
                 <DataSetName>DataCache</DataSetName>
-                <Top>66.49861mm</Top>
-                <Left>159.29263mm</Left>
+                <Top>52.47013mm</Top>
+                <Left>157.72536mm</Left>
                 <Height>60mm</Height>
                 <Width>120mm</Width>
                 <ZIndex>3</ZIndex>
@@ -6106,7 +6254,7 @@ OPTION (RECOMPILE)</CommandText>
                   </Paragraph>
                 </Paragraphs>
                 <Top>8.99132mm</Top>
-                <Left>9.51632mm</Left>
+                <Left>7.94904mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>80.78611mm</Width>
                 <ZIndex>4</ZIndex>
@@ -6306,7 +6454,7 @@ OPTION (RECOMPILE)</CommandText>
                 </TablixRowHierarchy>
                 <DataSetName>CacheHit</DataSetName>
                 <Top>17.0198mm</Top>
-                <Left>9.51632mm</Left>
+                <Left>7.94904mm</Left>
                 <Height>12mm</Height>
                 <Width>66.24421mm</Width>
                 <ZIndex>5</ZIndex>
@@ -6335,8 +6483,8 @@ OPTION (RECOMPILE)</CommandText>
                     <Style />
                   </Paragraph>
                 </Paragraphs>
-                <Top>33.0684mm</Top>
-                <Left>9.51632mm</Left>
+                <Top>8.99132mm</Top>
+                <Left>109.12073mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>80.78611mm</Width>
                 <ZIndex>6</ZIndex>
@@ -6537,8 +6685,8 @@ OPTION (RECOMPILE)</CommandText>
                   </TablixMembers>
                 </TablixRowHierarchy>
                 <DataSetName>MemoryInfo</DataSetName>
-                <Top>41.09688mm</Top>
-                <Left>9.51632mm</Left>
+                <Top>17.0198mm</Top>
+                <Left>109.12074mm</Left>
                 <Height>12mm</Height>
                 <Width>85.32987mm</Width>
                 <ZIndex>7</ZIndex>
@@ -6568,7 +6716,7 @@ OPTION (RECOMPILE)</CommandText>
                   </Paragraph>
                 </Paragraphs>
                 <Top>131.27709mm</Top>
-                <Left>9.51632mm</Left>
+                <Left>7.94904mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>80.78611mm</Width>
                 <ZIndex>8</ZIndex>
@@ -7760,7 +7908,7 @@ OPTION (RECOMPILE)</CommandText>
                 </TablixRowHierarchy>
                 <DataSetName>PlanCache</DataSetName>
                 <Top>139.30556mm</Top>
-                <Left>9.51631mm</Left>
+                <Left>7.94903mm</Left>
                 <Height>24mm</Height>
                 <Width>193.50769mm</Width>
                 <ZIndex>9</ZIndex>
@@ -8145,7 +8293,7 @@ OPTION (RECOMPILE)</CommandText>
                 </ChartNoDataMessage>
                 <DataSetName>PlanCache</DataSetName>
                 <Top>139.30556mm</Top>
-                <Left>211.61365mm</Left>
+                <Left>210.04637mm</Left>
                 <Height>60mm</Height>
                 <Width>120mm</Width>
                 <ZIndex>10</ZIndex>
@@ -8165,10 +8313,10 @@ OPTION (RECOMPILE)</CommandText>
               </Chart>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>204.92831mm</Top>
-            <Left>5.92207mm</Left>
+            <Top>224.93387mm</Top>
+            <Left>5.92208mm</Left>
             <Height>206.50348mm</Height>
-            <Width>350.72244mm</Width>
+            <Width>357.07244mm</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -8197,7 +8345,7 @@ OPTION (RECOMPILE)</CommandText>
             </Style>
           </Rectangle>
         </ReportItems>
-        <Height>450.89752mm</Height>
+        <Height>459.2186mm</Height>
         <Style>
           <Border>
             <Style>None</Style>
@@ -8207,7 +8355,7 @@ OPTION (RECOMPILE)</CommandText>
       <Width>414.72572mm</Width>
       <Page>
         <PageHeader>
-          <Height>52.47953mm</Height>
+          <Height>43.35899mm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -8276,72 +8424,6 @@ OPTION (RECOMPILE)</CommandText>
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="Textbox2">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>データベース名:</Value>
-                      <Style>
-                        <FontFamily>メイリオ</FontFamily>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>30.31828mm</Top>
-              <Left>3.93701mm</Left>
-              <Height>6.26459mm</Height>
-              <Width>32.27916mm</Width>
-              <ZIndex>2</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="DatabaseName">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Parameters!DatabaseName.Value</Value>
-                      <Style>
-                        <FontFamily>メイリオ</FontFamily>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>DatabaseName</rd:DefaultName>
-              <Top>30.58287mm</Top>
-              <Left>37.98007mm</Left>
-              <Height>6mm</Height>
-              <Width>96.20742mm</Width>
-              <ZIndex>3</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
             <Textbox Name="ExecutionTime">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
@@ -8361,11 +8443,11 @@ OPTION (RECOMPILE)</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>ExecutionTime</rd:DefaultName>
-              <Top>44.77009mm</Top>
+              <Top>37.0944mm</Top>
               <Left>37.98007mm</Left>
               <Height>6mm</Height>
               <Width>96.20742mm</Width>
-              <ZIndex>4</ZIndex>
+              <ZIndex>2</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -8393,11 +8475,11 @@ OPTION (RECOMPILE)</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>44.77009mm</Top>
+              <Top>37.0944mm</Top>
               <Left>3.93702mm</Left>
               <Height>6.26459mm</Height>
               <Width>32.27916mm</Width>
-              <ZIndex>5</ZIndex>
+              <ZIndex>3</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -8429,7 +8511,7 @@ OPTION (RECOMPILE)</CommandText>
               <Left>3.93702mm</Left>
               <Height>6.26459mm</Height>
               <Width>32.27916mm</Width>
-              <ZIndex>6</ZIndex>
+              <ZIndex>4</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -8461,7 +8543,7 @@ OPTION (RECOMPILE)</CommandText>
               <Left>37.98007mm</Left>
               <Height>6mm</Height>
               <Width>96.20742mm</Width>
-              <ZIndex>7</ZIndex>
+              <ZIndex>5</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -8492,10 +8574,10 @@ OPTION (RECOMPILE)</CommandText>
               </Paragraphs>
               <rd:DefaultName>Textbox11</rd:DefaultName>
               <Top>2.61408mm</Top>
-              <Left>3.93701mm</Left>
+              <Left>3.93702mm</Left>
               <Height>13.05835mm</Height>
               <Width>181.76874mm</Width>
-              <ZIndex>8</ZIndex>
+              <ZIndex>6</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -8525,11 +8607,11 @@ OPTION (RECOMPILE)</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>ExecutionTime</rd:DefaultName>
-              <Top>37.6412mm</Top>
+              <Top>29.96551mm</Top>
               <Left>37.98007mm</Left>
               <Height>6mm</Height>
               <Width>96.20742mm</Width>
-              <ZIndex>9</ZIndex>
+              <ZIndex>7</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -8557,11 +8639,11 @@ OPTION (RECOMPILE)</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>37.6412mm</Top>
+              <Top>29.96551mm</Top>
               <Left>3.93702mm</Left>
               <Height>6.26459mm</Height>
               <Width>32.27916mm</Width>
-              <ZIndex>10</ZIndex>
+              <ZIndex>8</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
