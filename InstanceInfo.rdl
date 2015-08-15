@@ -652,6 +652,32 @@ ORDER BY
         </Field>
       </Fields>
     </DataSet>
+    <DataSet Name="ServerInfo">
+      <Query>
+        <DataSourceName>LocalServer</DataSourceName>
+        <CommandText>SELECT cpu_count,hyperthread_ratio,physical_memory_kb,virtual_machine_type_desc 
+FROM sys.dm_os_sys_info</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="cpu_count">
+          <DataField>cpu_count</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="hyperthread_ratio">
+          <DataField>hyperthread_ratio</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="physical_memory_kb">
+          <DataField>physical_memory_kb</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="virtual_machine_type_desc">
+          <DataField>virtual_machine_type_desc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
   </DataSets>
   <ReportSections>
     <ReportSection>
@@ -1383,7 +1409,7 @@ ORDER BY
                   </TablixMembers>
                 </TablixRowHierarchy>
                 <DataSetName>WaitStats</DataSetName>
-                <Top>43.57772mm</Top>
+                <Top>69.93022mm</Top>
                 <Left>9.38773mm</Left>
                 <Height>12mm</Height>
                 <Width>217.97364mm</Width>
@@ -1751,7 +1777,7 @@ ORDER BY
                   </Style>
                 </ChartNoDataMessage>
                 <DataSetName>WaitStats</DataSetName>
-                <Top>43.57772mm</Top>
+                <Top>69.93022mm</Top>
                 <Left>228.4197mm</Left>
                 <Height>75mm</Height>
                 <Width>120mm</Width>
@@ -2112,7 +2138,7 @@ ORDER BY
                 </TablixRowHierarchy>
                 <NoRowsMessage>トレースフラグは設定されていません</NoRowsMessage>
                 <DataSetName>TraceFlag</DataSetName>
-                <Top>17.91314mm</Top>
+                <Top>44.26564mm</Top>
                 <Left>137.46821mm</Left>
                 <Height>11.64166mm</Height>
                 <Width>79.98277mm</Width>
@@ -2390,7 +2416,7 @@ ORDER BY
                   </TablixMembers>
                 </TablixRowHierarchy>
                 <DataSetName>InstanceConfiguration</DataSetName>
-                <Top>17.91314mm</Top>
+                <Top>44.26564mm</Top>
                 <Left>9.38773mm</Left>
                 <Height>11.64166mm</Height>
                 <Width>124.2125mm</Width>
@@ -2418,7 +2444,7 @@ ORDER BY
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox1</rd:DefaultName>
-                <Top>10.94299mm</Top>
+                <Top>37.64827mm</Top>
                 <Left>9.38773mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>38.1882mm</Width>
@@ -2450,7 +2476,7 @@ ORDER BY
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox1</rd:DefaultName>
-                <Top>10.94299mm</Top>
+                <Top>37.29549mm</Top>
                 <Left>137.46821mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>38.1882mm</Width>
@@ -2482,7 +2508,7 @@ ORDER BY
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox1</rd:DefaultName>
-                <Top>36.60757mm</Top>
+                <Top>62.96007mm</Top>
                 <Left>9.38774mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>38.1882mm</Width>
@@ -2528,11 +2554,399 @@ ORDER BY
                   <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
+              <Textbox Name="Textbox13">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>サーバー情報</Value>
+                        <Style>
+                          <FontFamily>メイリオ</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox1</rd:DefaultName>
+                <Top>9.67533mm</Top>
+                <Left>9.38773mm</Left>
+                <Height>6.26459mm</Height>
+                <Width>38.1882mm</Width>
+                <ZIndex>8</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Tablix Name="Tablix9">
+                <TablixBody>
+                  <TablixColumns>
+                    <TablixColumn>
+                      <Width>25mm</Width>
+                    </TablixColumn>
+                    <TablixColumn>
+                      <Width>33.27235mm</Width>
+                    </TablixColumn>
+                    <TablixColumn>
+                      <Width>39.49778mm</Width>
+                    </TablixColumn>
+                    <TablixColumn>
+                      <Width>47.225mm</Width>
+                    </TablixColumn>
+                  </TablixColumns>
+                  <TablixRows>
+                    <TablixRow>
+                      <Height>6mm</Height>
+                      <TablixCells>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="Textbox116">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>cpu count</Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>White</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox116</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>#7292cc</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <BackgroundColor>#4c68a2</BackgroundColor>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="Textbox117">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>hyperthread ratio</Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>White</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox117</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>#7292cc</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <BackgroundColor>#4c68a2</BackgroundColor>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="Textbox120">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>physical memory kb</Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>White</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox120</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>#7292cc</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <BackgroundColor>#4c68a2</BackgroundColor>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="Textbox122">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>virtual machine type desc</Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>White</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox122</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>#7292cc</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <BackgroundColor>#4c68a2</BackgroundColor>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                      </TablixCells>
+                    </TablixRow>
+                    <TablixRow>
+                      <Height>6mm</Height>
+                      <TablixCells>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="cpu_count">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!cpu_count.Value</Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                        <Format>#,0;(#,0)</Format>
+                                        <Color>#4d4d4d</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>cpu_count</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>#e5e5e5</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="hyperthread_ratio">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!hyperthread_ratio.Value</Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                        <Format>#,0;(#,0)</Format>
+                                        <Color>#4d4d4d</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>hyperthread_ratio</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>#e5e5e5</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="physical_memory_kb">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!physical_memory_kb.Value</Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                        <Format>#,0;(#,0)</Format>
+                                        <Color>#4d4d4d</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>physical_memory_kb</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>#e5e5e5</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="virtual_machine_type_desc">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!virtual_machine_type_desc.Value</Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                        <Color>#4d4d4d</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>virtual_machine_type_desc</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>#e5e5e5</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                      </TablixCells>
+                    </TablixRow>
+                  </TablixRows>
+                </TablixBody>
+                <TablixColumnHierarchy>
+                  <TablixMembers>
+                    <TablixMember />
+                    <TablixMember />
+                    <TablixMember />
+                    <TablixMember />
+                  </TablixMembers>
+                </TablixColumnHierarchy>
+                <TablixRowHierarchy>
+                  <TablixMembers>
+                    <TablixMember>
+                      <KeepWithGroup>After</KeepWithGroup>
+                    </TablixMember>
+                    <TablixMember>
+                      <Group Name="詳細13" />
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixRowHierarchy>
+                <DataSetName>ServerInfo</DataSetName>
+                <Top>18.79415mm</Top>
+                <Left>9.38773mm</Left>
+                <Height>12mm</Height>
+                <Width>144.99513mm</Width>
+                <ZIndex>9</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+              </Tablix>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
             <Top>5.01835mm</Top>
             <Left>6.62269mm</Left>
-            <Height>122.23084mm</Height>
+            <Height>163.99234mm</Height>
             <Width>357.07245mm</Width>
             <Style>
               <Border>
@@ -4016,7 +4430,7 @@ ORDER BY
                 </TablixRowHierarchy>
                 <DataSetName>FileIOInfo</DataSetName>
                 <Top>50.79462mm</Top>
-                <Left>6.52045mm</Left>
+                <Left>6.48314mm</Left>
                 <Height>24mm</Height>
                 <Width>363.06603mm</Width>
                 <Visibility>
@@ -4590,11 +5004,12 @@ ORDER BY
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value />
+                                      <Value>=Sum(Fields!File_Size_KB_.Value) + Sum(Fields!UsedExtents_KB_.Value)</Value>
                                       <Style>
                                         <FontFamily>メイリオ</FontFamily>
                                         <FontSize>9pt</FontSize>
                                         <FontWeight>Bold</FontWeight>
+                                        <Format>#,0;(#,0)</Format>
                                         <Color>#465678</Color>
                                       </Style>
                                     </TextRun>
@@ -4783,11 +5198,12 @@ ORDER BY
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value />
+                                      <Value>=Sum(Fields!File_Size_KB_.Value) + Sum(Fields!UsedExtents_KB_.Value)</Value>
                                       <Style>
                                         <FontFamily>メイリオ</FontFamily>
                                         <FontSize>9pt</FontSize>
                                         <FontWeight>Bold</FontWeight>
+                                        <Format>#,0;(#,0)</Format>
                                         <Color>White</Color>
                                       </Style>
                                     </TextRun>
@@ -4976,7 +5392,7 @@ ORDER BY
                 </TablixRowHierarchy>
                 <DataSetName>DatabaseFileUsage</DataSetName>
                 <Top>16.69196mm</Top>
-                <Left>6.52045mm</Left>
+                <Left>6.48314mm</Left>
                 <Height>24mm</Height>
                 <Width>387.56996mm</Width>
                 <ZIndex>1</ZIndex>
@@ -5007,7 +5423,7 @@ ORDER BY
                   </Paragraph>
                 </Paragraphs>
                 <Top>8.66348mm</Top>
-                <Left>6.52045mm</Left>
+                <Left>6.48314mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>80.78611mm</Width>
                 <ZIndex>2</ZIndex>
@@ -5038,7 +5454,7 @@ ORDER BY
                   </Paragraph>
                 </Paragraphs>
                 <Top>42.76614mm</Top>
-                <Left>6.52045mm</Left>
+                <Left>6.48314mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>76.81736mm</Width>
                 <ZIndex>3</ZIndex>
@@ -5069,7 +5485,7 @@ ORDER BY
                   </Paragraph>
                 </Paragraphs>
                 <Top>0.635mm</Top>
-                <Left>0.37764mm</Left>
+                <Left>0.34033mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>80.78611mm</Width>
                 <ZIndex>4</ZIndex>
@@ -5100,7 +5516,7 @@ ORDER BY
                   </Paragraph>
                 </Paragraphs>
                 <Top>76.55851mm</Top>
-                <Left>6.52045mm</Left>
+                <Left>6.48314mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>80.78611mm</Width>
                 <ZIndex>5</ZIndex>
@@ -5610,7 +6026,7 @@ ORDER BY
                 </TablixRowHierarchy>
                 <DataSetName>AutoGrow</DataSetName>
                 <Top>84.58699mm</Top>
-                <Left>6.52045mm</Left>
+                <Left>6.48314mm</Left>
                 <Height>12mm</Height>
                 <Width>196.54206mm</Width>
                 <ZIndex>6</ZIndex>
@@ -5626,8 +6042,8 @@ ORDER BY
               </Tablix>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>141.25075mm</Top>
-            <Left>6.24506mm</Left>
+            <Top>189.34686mm</Top>
+            <Left>6.62269mm</Left>
             <Height>99.40779mm</Height>
             <Width>402.97834mm</Width>
             <ZIndex>2</ZIndex>
@@ -5657,7 +6073,7 @@ ORDER BY
                 </Paragraphs>
                 <rd:DefaultName>Textbox147</rd:DefaultName>
                 <Top>0mm</Top>
-                <Left>0.18882mm</Left>
+                <Left>0.52915mm</Left>
                 <Height>5.55625mm</Height>
                 <Width>37.57083mm</Width>
                 <Style>
@@ -5687,7 +6103,7 @@ ORDER BY
                   </Paragraph>
                 </Paragraphs>
                 <Top>44.44165mm</Top>
-                <Left>7.94904mm</Left>
+                <Left>8.28937mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>80.78611mm</Width>
                 <ZIndex>1</ZIndex>
@@ -6433,7 +6849,7 @@ ORDER BY
                 </TablixRowHierarchy>
                 <DataSetName>DataCache</DataSetName>
                 <Top>52.47013mm</Top>
-                <Left>7.94905mm</Left>
+                <Left>8.28938mm</Left>
                 <Height>18mm</Height>
                 <Width>130.30279mm</Width>
                 <ZIndex>2</ZIndex>
@@ -6803,7 +7219,7 @@ ORDER BY
                 </ChartNoDataMessage>
                 <DataSetName>DataCache</DataSetName>
                 <Top>52.47013mm</Top>
-                <Left>157.72536mm</Left>
+                <Left>158.06569mm</Left>
                 <Height>75mm</Height>
                 <Width>120mm</Width>
                 <ZIndex>3</ZIndex>
@@ -6838,7 +7254,7 @@ ORDER BY
                   </Paragraph>
                 </Paragraphs>
                 <Top>8.99132mm</Top>
-                <Left>7.94904mm</Left>
+                <Left>8.28937mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>80.78611mm</Width>
                 <ZIndex>4</ZIndex>
@@ -7038,7 +7454,7 @@ ORDER BY
                 </TablixRowHierarchy>
                 <DataSetName>CacheHit</DataSetName>
                 <Top>17.0198mm</Top>
-                <Left>7.94904mm</Left>
+                <Left>8.28937mm</Left>
                 <Height>12mm</Height>
                 <Width>66.24421mm</Width>
                 <ZIndex>5</ZIndex>
@@ -7068,7 +7484,7 @@ ORDER BY
                   </Paragraph>
                 </Paragraphs>
                 <Top>8.99132mm</Top>
-                <Left>109.12073mm</Left>
+                <Left>109.46106mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>80.78611mm</Width>
                 <ZIndex>6</ZIndex>
@@ -7270,7 +7686,7 @@ ORDER BY
                 </TablixRowHierarchy>
                 <DataSetName>MemoryInfo</DataSetName>
                 <Top>17.0198mm</Top>
-                <Left>109.12074mm</Left>
+                <Left>109.46107mm</Left>
                 <Height>12mm</Height>
                 <Width>85.32987mm</Width>
                 <ZIndex>7</ZIndex>
@@ -7300,7 +7716,7 @@ ORDER BY
                   </Paragraph>
                 </Paragraphs>
                 <Top>135.72209mm</Top>
-                <Left>7.94904mm</Left>
+                <Left>8.28937mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>80.78611mm</Width>
                 <ZIndex>8</ZIndex>
@@ -8492,7 +8908,7 @@ ORDER BY
                 </TablixRowHierarchy>
                 <DataSetName>PlanCache</DataSetName>
                 <Top>143.75056mm</Top>
-                <Left>7.94903mm</Left>
+                <Left>8.28936mm</Left>
                 <Height>24mm</Height>
                 <Width>193.50769mm</Width>
                 <ZIndex>9</ZIndex>
@@ -8877,7 +9293,7 @@ ORDER BY
                 </ChartNoDataMessage>
                 <DataSetName>PlanCache</DataSetName>
                 <Top>143.75056mm</Top>
-                <Left>210.04637mm</Left>
+                <Left>210.3867mm</Left>
                 <Height>75mm</Height>
                 <Width>120mm</Width>
                 <ZIndex>10</ZIndex>
@@ -8897,8 +9313,8 @@ ORDER BY
               </Chart>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>309.84863mm</Top>
-            <Left>6.6227mm</Left>
+            <Top>368.73974mm</Top>
+            <Left>6.62269mm</Left>
             <Height>224.12491mm</Height>
             <Width>357.07244mm</Width>
             <ZIndex>3</ZIndex>
@@ -8948,7 +9364,7 @@ ORDER BY
                 </Paragraphs>
                 <rd:DefaultName>Textbox147</rd:DefaultName>
                 <Top>0mm</Top>
-                <Left>0mm</Left>
+                <Left>0.52915mm</Left>
                 <Height>5.55625mm</Height>
                 <Width>37.57083mm</Width>
                 <Style>
@@ -8978,7 +9394,7 @@ ORDER BY
                   </Paragraph>
                 </Paragraphs>
                 <Top>7.10854mm</Top>
-                <Left>5.95399mm</Left>
+                <Left>6.48314mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>76.81736mm</Width>
                 <ZIndex>1</ZIndex>
@@ -9085,7 +9501,7 @@ ORDER BY
                 </TablixRowHierarchy>
                 <DataSetName>DBList</DataSetName>
                 <Top>15.13702mm</Top>
-                <Left>6.08416mm</Left>
+                <Left>6.61331mm</Left>
                 <Height>8.91042mm</Height>
                 <Width>217.476mm</Width>
                 <ZIndex>2</ZIndex>
@@ -9132,7 +9548,7 @@ ORDER BY
                   </Paragraph>
                 </Paragraphs>
                 <Top>25.81132mm</Top>
-                <Left>6.14281mm</Left>
+                <Left>6.67196mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>76.81736mm</Width>
                 <ZIndex>3</ZIndex>
@@ -9239,7 +9655,7 @@ ORDER BY
                 </TablixRowHierarchy>
                 <DataSetName>DBList</DataSetName>
                 <Top>33.8398mm</Top>
-                <Left>5.95399mm</Left>
+                <Left>6.48314mm</Left>
                 <Height>8.91042mm</Height>
                 <Width>217.476mm</Width>
                 <ZIndex>4</ZIndex>
@@ -9271,8 +9687,8 @@ ORDER BY
               </Tablix>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>252.69009mm</Top>
-            <Left>6.81152mm</Left>
+            <Top>305.5487mm</Top>
+            <Left>6.62269mm</Left>
             <Height>46.45161mm</Height>
             <Width>231.00832mm</Width>
             <ZIndex>4</ZIndex>
@@ -10072,8 +10488,8 @@ ORDER BY
               </Tablix>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>545.46594mm</Top>
-            <Left>6.81152mm</Left>
+            <Top>609.11955mm</Top>
+            <Left>7.15184mm</Left>
             <Height>20.90208mm</Height>
             <Width>437.81986mm</Width>
             <ZIndex>5</ZIndex>
