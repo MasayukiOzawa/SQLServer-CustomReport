@@ -19,6 +19,7 @@ SQL Server Management Studio のカスタムレポートを使用し、SQL Serve
   - キャッシュ使用状況
   - データキャッシュの比率
   - プランキャッシュの比率
+- バックアップ取得状況
 
 # 動作確認状況
 SQL Server 2012 + SQL Server 2014 Management Studio
