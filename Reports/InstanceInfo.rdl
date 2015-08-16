@@ -4812,7 +4812,7 @@ FROM sys.dm_os_sys_info</CommandText>
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=IIf(Fields!is_percent_growth.Value = "True",Fields!growth.Value &amp; " %",  FormatNumber(Fields!growth.Value * 8, 0) &amp; " MB")</Value>
+                                      <Value>=IIf(Fields!is_percent_growth.Value = "True",Fields!growth.Value &amp; " %",  FormatNumber(Fields!growth.Value * 8, 0) &amp; " KB")</Value>
                                       <Style>
                                         <FontFamily>メイリオ</FontFamily>
                                         <FontSize>9pt</FontSize>
@@ -4838,6 +4838,7 @@ FROM sys.dm_os_sys_info</CommandText>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
                             </Textbox>
+                            <rd:Selected>true</rd:Selected>
                           </CellContents>
                         </TablixCell>
                       </TablixCells>
