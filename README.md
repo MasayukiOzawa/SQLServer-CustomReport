@@ -30,6 +30,8 @@ SQL Server Management Studio のカスタムレポートを使用し、SQL Serve
 
 # 動作確認環境
 - SQL Server 2012 + SQL Server 2014 Management Studio
+- SQL Server 2014 SP1 + SQL Server 2016 CTP 2.2 Management Studio
+- SQL Server 2016 CTP 2.2 + SQL Server 2016 CTP 2.2 Management Studio
 
 # 使用方法
 1.「@Template.rdl」以外の RDL ファイルをダウンロードして同一のフォルダーに配置します。  
