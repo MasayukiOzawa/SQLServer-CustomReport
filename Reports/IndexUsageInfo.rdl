@@ -37,7 +37,15 @@ CONVERT(nvarchar, SERVERPROPERTY('ProductVersion'))
     <DataSet Name="IndexUsage">
       <Query>
         <DataSourceName>LocalServer</DataSourceName>
-        <CommandText>SELECT 
+        <QueryParameters>
+          <QueryParameter Name="@OrderKeyName">
+            <Value>=Parameters!OrderKeyName.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>DECLARE @sql nvarchar(max)
+
+SET @sql = N'
+SELECT 
 	DB_NAME() as db_name
 	, SCHEMA_NAME(so.schema_id) AS [schema_name]
 	, OBJECT_NAME(si.object_id) AS [object_name]
@@ -121,7 +129,7 @@ FROM
 	sp.partition_number = dps.partition_number
 	CROSS APPLY
 	(SELECT 
-		sc.name + ','
+		sc.name + '',''
 	FROM
 		sys.index_columns sic
 		INNER JOIN
@@ -136,11 +144,11 @@ FROM
 		sic.index_id = si.index_id
 		AND
 		sic.is_included_column = 0
-	FOR XML PATH('')
+	FOR XML PATH('''')
 	) AS idxcolinfo(idxcolname)
 	CROSS APPLY
 	(SELECT 
-		sc.name + ','
+		sc.name + '',''
 	FROM
 		sys.index_columns sic
 		INNER JOIN
@@ -155,17 +163,16 @@ FROM
 		sic.index_id = si.index_id
 		AND
 		sic.is_included_column = 1
-	FOR XML PATH('')
+	FOR XML PATH('''')
 	) AS idxinccolinfo(idxinccolname)
 WHERE
 	(ius.database_id = DB_ID() OR ius.database_id IS NULL)
 	AND
-	so.schema_id &lt;&gt; SCHEMA_ID('sys')
-ORDER BY
-	object_name,
-	index_id,
-	partition_number
-OPTION (RECOMPILE)</CommandText>
+	so.schema_id &lt;&gt; SCHEMA_ID(''sys'')'
+SET @sql +=N'
+ORDER BY ' + @OrderKeyName + N' OPTION (RECOMPILE)'
+
+EXEC sp_executesql @sql</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <Fields>
@@ -2467,7 +2474,7 @@ OPTION (RECOMPILE)</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>インデックス使用状況</Value>
+                    <Value>="インデックス使用状況" + IIF(Parameters!OrderKeyName.Value = "[row_lock_wait_in_ms] + [page_lock_wait_in_ms] DESC", " (ロック発生時間順)","")</Value>
                     <Style>
                       <FontFamily>メイリオ</FontFamily>
                     </Style>
@@ -2479,7 +2486,7 @@ OPTION (RECOMPILE)</CommandText>
             <Top>2.36359mm</Top>
             <Left>3.93702mm</Left>
             <Height>6.26459mm</Height>
-            <Width>47.88958mm</Width>
+            <Width>136.525mm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -2977,6 +2984,16 @@ OPTION (RECOMPILE)</CommandText>
       <DataType>String</DataType>
       <Nullable>true</Nullable>
       <Prompt>ServerName</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="OrderKeyName">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>object_name,index_id,partition_number</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>OrderKeyName</Prompt>
       <Hidden>true</Hidden>
     </ReportParameter>
   </ReportParameters>

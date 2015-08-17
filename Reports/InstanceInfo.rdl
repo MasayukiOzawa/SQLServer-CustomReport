@@ -6081,7 +6081,7 @@ OPTION (RECOMPILE)
               </Tablix>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>189.34686mm</Top>
+            <Top>182.99686mm</Top>
             <Left>6.62269mm</Left>
             <Height>99.40779mm</Height>
             <Width>402.97834mm</Width>
@@ -10092,7 +10092,7 @@ OPTION (RECOMPILE)
               </Chart>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>368.73974mm</Top>
+            <Top>356.03974mm</Top>
             <Left>6.62269mm</Left>
             <Height>335.84661mm</Height>
             <Width>357.07244mm</Width>
@@ -10142,7 +10142,7 @@ OPTION (RECOMPILE)
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox147</rd:DefaultName>
-                <Top>0mm</Top>
+                <Top>0.10583mm</Top>
                 <Left>0.52915mm</Left>
                 <Height>5.55625mm</Height>
                 <Width>37.57083mm</Width>
@@ -10172,7 +10172,7 @@ OPTION (RECOMPILE)
                     <Style />
                   </Paragraph>
                 </Paragraphs>
-                <Top>7.10854mm</Top>
+                <Top>7.21437mm</Top>
                 <Left>6.48314mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>76.81736mm</Width>
@@ -10229,6 +10229,9 @@ OPTION (RECOMPILE)
                                             <Parameter Name="DatabaseName">
                                               <Value>=Fields!name.Value</Value>
                                             </Parameter>
+                                            <Parameter Name="OrderKeyName">
+                                              <Value>object_name,index_id,partition_number</Value>
+                                            </Parameter>
                                           </Parameters>
                                         </Drillthrough>
                                       </Action>
@@ -10279,7 +10282,7 @@ OPTION (RECOMPILE)
                   </TablixMembers>
                 </TablixRowHierarchy>
                 <DataSetName>DBList</DataSetName>
-                <Top>15.13702mm</Top>
+                <Top>15.24285mm</Top>
                 <Left>6.61331mm</Left>
                 <Height>8.91042mm</Height>
                 <Width>217.476mm</Width>
@@ -10326,7 +10329,7 @@ OPTION (RECOMPILE)
                     <Style />
                   </Paragraph>
                 </Paragraphs>
-                <Top>25.81132mm</Top>
+                <Top>28.45715mm</Top>
                 <Left>6.67196mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>76.81736mm</Width>
@@ -10433,7 +10436,7 @@ OPTION (RECOMPILE)
                   </TablixMembers>
                 </TablixRowHierarchy>
                 <DataSetName>DBList</DataSetName>
-                <Top>33.8398mm</Top>
+                <Top>36.48563mm</Top>
                 <Left>6.48314mm</Left>
                 <Height>8.91042mm</Height>
                 <Width>217.476mm</Width>
@@ -10466,9 +10469,9 @@ OPTION (RECOMPILE)
               </Tablix>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>305.5487mm</Top>
+            <Top>294.96537mm</Top>
             <Left>6.62269mm</Left>
-            <Height>46.45161mm</Height>
+            <Height>48.83286mm</Height>
             <Width>231.00832mm</Width>
             <ZIndex>4</ZIndex>
             <Style>
@@ -11267,7 +11270,7 @@ OPTION (RECOMPILE)
               </Tablix>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>725.32455mm</Top>
+            <Top>750.72455mm</Top>
             <Left>6.62269mm</Left>
             <Height>20.90208mm</Height>
             <Width>437.81986mm</Width>
@@ -11298,15 +11301,240 @@ OPTION (RECOMPILE)
               </RightBorder>
             </Style>
           </Rectangle>
+          <Rectangle Name="Rectangle12">
+            <ReportItems>
+              <Textbox Name="Textbox68">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>ロック情報</Value>
+                        <Style>
+                          <FontFamily>メイリオ</FontFamily>
+                          <FontSize>9pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox68</rd:DefaultName>
+                <Top>0.86877mm</Top>
+                <Left>1.38889mm</Left>
+                <Height>7.14375mm</Height>
+                <Width>32.58359mm</Width>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="txtIndexLock">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>ロック発生状況</Value>
+                        <Style>
+                          <FontFamily>メイリオ</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>12.63904mm</Top>
+                <Left>4.15758mm</Left>
+                <Height>6.26459mm</Height>
+                <Width>76.81736mm</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Tablix Name="Tablix15">
+                <TablixBody>
+                  <TablixColumns>
+                    <TablixColumn>
+                      <Width>217.476mm</Width>
+                    </TablixColumn>
+                  </TablixColumns>
+                  <TablixRows>
+                    <TablixRow>
+                      <Height>8.91042mm</Height>
+                      <TablixCells>
+                        <TablixCell>
+                          <CellContents>
+                            <Rectangle Name="Rectangle9">
+                              <ReportItems>
+                                <Textbox Name="name6">
+                                  <CanGrow>true</CanGrow>
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!name.Value</Value>
+                                          <Style>
+                                            <TextDecoration>Underline</TextDecoration>
+                                            <Color>Blue</Color>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <rd:DefaultName>name3</rd:DefaultName>
+                                  <ActionInfo>
+                                    <Actions>
+                                      <Action>
+                                        <Drillthrough>
+                                          <ReportName>IndexUsageInfo</ReportName>
+                                          <Parameters>
+                                            <Parameter Name="DatabaseName">
+                                              <Value>=Fields!name.Value</Value>
+                                            </Parameter>
+                                            <Parameter Name="OrderKeyName">
+                                              <Value>="[row_lock_wait_in_ms] + [page_lock_wait_in_ms] DESC"</Value>
+                                            </Parameter>
+                                          </Parameters>
+                                        </Drillthrough>
+                                      </Action>
+                                    </Actions>
+                                  </ActionInfo>
+                                  <Top>0.9525mm</Top>
+                                  <Left>0.65348mm</Left>
+                                  <Height>6mm</Height>
+                                  <Width>38.37074mm</Width>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                </Textbox>
+                              </ReportItems>
+                              <KeepTogether>true</KeepTogether>
+                              <Visibility>
+                                <Hidden>true</Hidden>
+                                <ToggleItem>txtIndexLock</ToggleItem>
+                              </Visibility>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Rectangle>
+                          </CellContents>
+                        </TablixCell>
+                      </TablixCells>
+                    </TablixRow>
+                  </TablixRows>
+                </TablixBody>
+                <TablixColumnHierarchy>
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
+                </TablixColumnHierarchy>
+                <TablixRowHierarchy>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="詳細14" />
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixRowHierarchy>
+                <DataSetName>DBList</DataSetName>
+                <Top>20.66752mm</Top>
+                <Left>4.28775mm</Left>
+                <Height>8.91042mm</Height>
+                <Width>217.476mm</Width>
+                <ZIndex>2</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                  <TopBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </TopBorder>
+                  <BottomBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </BottomBorder>
+                  <LeftBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </LeftBorder>
+                  <RightBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </RightBorder>
+                </Style>
+              </Tablix>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>703.45305mm</Top>
+            <Left>6.62269mm</Left>
+            <Height>35.6485mm</Height>
+            <Width>235.78667mm</Width>
+            <ZIndex>6</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+              <TopBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </TopBorder>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+              <LeftBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </LeftBorder>
+              <RightBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </RightBorder>
+            </Style>
+          </Rectangle>
         </ReportItems>
-        <Height>752.57663mm</Height>
+        <Height>789.247mm</Height>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Body>
-      <Width>448.86471mm</Width>
+      <Width>485.6886mm</Width>
       <Page>
         <PageHeader>
           <Height>43.35899mm</Height>
