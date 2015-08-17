@@ -678,6 +678,45 @@ FROM sys.dm_os_sys_info</CommandText>
         </Field>
       </Fields>
     </DataSet>
+    <DataSet Name="MemoryAssignInfo">
+      <Query>
+        <DataSourceName>LocalServer</DataSourceName>
+        <CommandText>DECLARE @curr_tracefilename varchar(500) 
+DECLARE @base_tracefilename varchar(500)
+DECLARE @indx int
+
+SELECT @curr_tracefilename = path FROM sys.traces WHERE is_default = 1
+SET @curr_tracefilename = reverse(@curr_tracefilename)
+SELECT @indx  = patindex('%\%', @curr_tracefilename)
+SET @curr_tracefilename = reverse(@curr_tracefilename)
+SET @base_tracefilename = left( @curr_tracefilename,len(@curr_tracefilename) - @indx) + '\log.trc'
+
+SELECT 	
+	EventClass,
+	StartTime,
+	IntegerData
+FROM 
+	fn_trace_gettable( @base_tracefilename, default ) 
+WHERE 
+	EventClass IN (81)
+OPTION (RECOMPILE)
+</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="EventClass">
+          <DataField>EventClass</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="StartTime">
+          <DataField>StartTime</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="IntegerData">
+          <DataField>IntegerData</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
   </DataSets>
   <ReportSections>
     <ReportSection>
@@ -4838,7 +4877,6 @@ FROM sys.dm_os_sys_info</CommandText>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
                             </Textbox>
-                            <rd:Selected>true</rd:Selected>
                           </CellContents>
                         </TablixCell>
                       </TablixCells>
@@ -6103,7 +6141,7 @@ FROM sys.dm_os_sys_info</CommandText>
                     <Style />
                   </Paragraph>
                 </Paragraphs>
-                <Top>44.44165mm</Top>
+                <Top>112.06915mm</Top>
                 <Left>8.28937mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>80.78611mm</Width>
@@ -6849,7 +6887,7 @@ FROM sys.dm_os_sys_info</CommandText>
                   </TablixMembers>
                 </TablixRowHierarchy>
                 <DataSetName>DataCache</DataSetName>
-                <Top>52.47013mm</Top>
+                <Top>120.09763mm</Top>
                 <Left>8.28938mm</Left>
                 <Height>18mm</Height>
                 <Width>130.30279mm</Width>
@@ -7219,7 +7257,7 @@ FROM sys.dm_os_sys_info</CommandText>
                   </Style>
                 </ChartNoDataMessage>
                 <DataSetName>DataCache</DataSetName>
-                <Top>52.47013mm</Top>
+                <Top>120.09763mm</Top>
                 <Left>158.06569mm</Left>
                 <Height>75mm</Height>
                 <Width>120mm</Width>
@@ -7254,7 +7292,7 @@ FROM sys.dm_os_sys_info</CommandText>
                     <Style />
                   </Paragraph>
                 </Paragraphs>
-                <Top>8.99132mm</Top>
+                <Top>86.14382mm</Top>
                 <Left>8.28937mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>80.78611mm</Width>
@@ -7454,7 +7492,7 @@ FROM sys.dm_os_sys_info</CommandText>
                   </TablixMembers>
                 </TablixRowHierarchy>
                 <DataSetName>CacheHit</DataSetName>
-                <Top>17.0198mm</Top>
+                <Top>94.1723mm</Top>
                 <Left>8.28937mm</Left>
                 <Height>12mm</Height>
                 <Width>66.24421mm</Width>
@@ -7484,7 +7522,7 @@ FROM sys.dm_os_sys_info</CommandText>
                     <Style />
                   </Paragraph>
                 </Paragraphs>
-                <Top>8.99132mm</Top>
+                <Top>86.14382mm</Top>
                 <Left>109.46106mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>80.78611mm</Width>
@@ -7686,7 +7724,7 @@ FROM sys.dm_os_sys_info</CommandText>
                   </TablixMembers>
                 </TablixRowHierarchy>
                 <DataSetName>MemoryInfo</DataSetName>
-                <Top>17.0198mm</Top>
+                <Top>94.1723mm</Top>
                 <Left>109.46107mm</Left>
                 <Height>12mm</Height>
                 <Width>85.32987mm</Width>
@@ -7716,8 +7754,8 @@ FROM sys.dm_os_sys_info</CommandText>
                     <Style />
                   </Paragraph>
                 </Paragraphs>
-                <Top>135.72209mm</Top>
-                <Left>8.28937mm</Left>
+                <Top>204.05514mm</Top>
+                <Left>9.38774mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>80.78611mm</Width>
                 <ZIndex>8</ZIndex>
@@ -8908,7 +8946,7 @@ FROM sys.dm_os_sys_info</CommandText>
                   </TablixMembers>
                 </TablixRowHierarchy>
                 <DataSetName>PlanCache</DataSetName>
-                <Top>143.75056mm</Top>
+                <Top>211.37806mm</Top>
                 <Left>8.28936mm</Left>
                 <Height>24mm</Height>
                 <Width>193.50769mm</Width>
@@ -9293,7 +9331,7 @@ FROM sys.dm_os_sys_info</CommandText>
                   </Style>
                 </ChartNoDataMessage>
                 <DataSetName>PlanCache</DataSetName>
-                <Top>143.75056mm</Top>
+                <Top>211.37806mm</Top>
                 <Left>210.3867mm</Left>
                 <Height>75mm</Height>
                 <Width>120mm</Width>
@@ -9328,7 +9366,7 @@ FROM sys.dm_os_sys_info</CommandText>
                     <Style />
                   </Paragraph>
                 </Paragraphs>
-                <Top>222.5687mm</Top>
+                <Top>290.1962mm</Top>
                 <Left>8.28936mm</Left>
                 <Height>6.26459mm</Height>
                 <Width>80.78611mm</Width>
@@ -9641,7 +9679,7 @@ FROM sys.dm_os_sys_info</CommandText>
                   </Textbox>
                 </ReportItems>
                 <KeepTogether>true</KeepTogether>
-                <Top>230.59718mm</Top>
+                <Top>298.22468mm</Top>
                 <Left>9.38774mm</Left>
                 <Height>28.96124mm</Height>
                 <Width>138.50582mm</Width>
@@ -9655,11 +9693,408 @@ FROM sys.dm_os_sys_info</CommandText>
                   </Border>
                 </Style>
               </Rectangle>
+              <Textbox Name="txtMemoryAssign">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>メモリ割り当て状況の推移 (MB)</Value>
+                        <Style>
+                          <FontFamily>メイリオ</FontFamily>
+                          <FontSize>9pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>9.87995mm</Top>
+                <Left>8.48932mm</Left>
+                <Height>7.40833mm</Height>
+                <Width>59.17076mm</Width>
+                <ZIndex>13</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Chart Name="Chart5">
+                <ChartCategoryHierarchy>
+                  <ChartMembers>
+                    <ChartMember>
+                      <Group Name="Chart5_CategoryGroup">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!StartTime.Value</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Fields!StartTime.Value</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <Label>=Fields!StartTime.Value</Label>
+                    </ChartMember>
+                  </ChartMembers>
+                </ChartCategoryHierarchy>
+                <ChartSeriesHierarchy>
+                  <ChartMembers>
+                    <ChartMember>
+                      <Label>Integer Data</Label>
+                    </ChartMember>
+                  </ChartMembers>
+                </ChartSeriesHierarchy>
+                <ChartData>
+                  <ChartSeriesCollection>
+                    <ChartSeries Name="IntegerData">
+                      <ChartDataPoints>
+                        <ChartDataPoint>
+                          <ChartDataPointValues>
+                            <Y>=Sum(Fields!IntegerData.Value)</Y>
+                          </ChartDataPointValues>
+                          <ChartDataLabel>
+                            <Style>
+                              <FontFamily>Tahoma</FontFamily>
+                              <FontSize>8pt</FontSize>
+                            </Style>
+                          </ChartDataLabel>
+                          <ToolTip>#VALY</ToolTip>
+                          <Style />
+                          <ChartMarker>
+                            <Style />
+                          </ChartMarker>
+                          <DataElementOutput>Output</DataElementOutput>
+                        </ChartDataPoint>
+                      </ChartDataPoints>
+                      <Type>Line</Type>
+                      <Style>
+                        <ShadowColor>DimGray</ShadowColor>
+                        <ShadowOffset>1pt</ShadowOffset>
+                      </Style>
+                      <ChartEmptyPoints>
+                        <Style />
+                        <ChartMarker>
+                          <Style />
+                        </ChartMarker>
+                        <ChartDataLabel>
+                          <Style />
+                        </ChartDataLabel>
+                      </ChartEmptyPoints>
+                      <ValueAxisName>Primary</ValueAxisName>
+                      <CategoryAxisName>Primary</CategoryAxisName>
+                      <ChartSmartLabel>
+                        <CalloutLineColor>Black</CalloutLineColor>
+                        <MinMovingDistance>0pt</MinMovingDistance>
+                      </ChartSmartLabel>
+                    </ChartSeries>
+                  </ChartSeriesCollection>
+                </ChartData>
+                <ChartAreas>
+                  <ChartArea Name="Default">
+                    <ChartCategoryAxes>
+                      <ChartAxis Name="Primary">
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                          </Border>
+                          <FontFamily>メイリオ</FontFamily>
+                          <FontSize>8pt</FontSize>
+                          <Format>yyyy/MM/dd</Format>
+                        </Style>
+                        <ChartAxisTitle>
+                          <Caption />
+                          <Style>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </ChartAxisTitle>
+                        <IntervalType>Days</IntervalType>
+                        <ChartMajorGridLines>
+                          <Enabled>False</Enabled>
+                          <Style>
+                            <Border>
+                              <Color>Gainsboro</Color>
+                            </Border>
+                          </Style>
+                        </ChartMajorGridLines>
+                        <ChartMinorGridLines>
+                          <Style>
+                            <Border>
+                              <Color>Gainsboro</Color>
+                              <Style>Dotted</Style>
+                            </Border>
+                          </Style>
+                        </ChartMinorGridLines>
+                        <ChartMajorTickMarks>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                          </Style>
+                        </ChartMajorTickMarks>
+                        <ChartMinorTickMarks>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                          </Style>
+                          <Length>0.5</Length>
+                        </ChartMinorTickMarks>
+                        <CrossAt>NaN</CrossAt>
+                        <Minimum>NaN</Minimum>
+                        <Maximum>NaN</Maximum>
+                        <MaxFontSize>7pt</MaxFontSize>
+                        <ChartAxisScaleBreak>
+                          <Style />
+                        </ChartAxisScaleBreak>
+                      </ChartAxis>
+                      <ChartAxis Name="Secondary">
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                          </Border>
+                          <FontFamily>Tahoma</FontFamily>
+                          <FontSize>8pt</FontSize>
+                        </Style>
+                        <ChartAxisTitle>
+                          <Caption>軸のタイトル</Caption>
+                          <Style>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </ChartAxisTitle>
+                        <ChartMajorGridLines>
+                          <Enabled>False</Enabled>
+                          <Style>
+                            <Border>
+                              <Color>Gainsboro</Color>
+                            </Border>
+                          </Style>
+                        </ChartMajorGridLines>
+                        <ChartMinorGridLines>
+                          <Style>
+                            <Border>
+                              <Color>Gainsboro</Color>
+                              <Style>Dotted</Style>
+                            </Border>
+                          </Style>
+                        </ChartMinorGridLines>
+                        <ChartMajorTickMarks>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                          </Style>
+                        </ChartMajorTickMarks>
+                        <ChartMinorTickMarks>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                          </Style>
+                          <Length>0.5</Length>
+                        </ChartMinorTickMarks>
+                        <CrossAt>NaN</CrossAt>
+                        <Location>Opposite</Location>
+                        <Minimum>NaN</Minimum>
+                        <Maximum>NaN</Maximum>
+                        <ChartAxisScaleBreak>
+                          <Style />
+                        </ChartAxisScaleBreak>
+                      </ChartAxis>
+                    </ChartCategoryAxes>
+                    <ChartValueAxes>
+                      <ChartAxis Name="Primary">
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                          </Border>
+                          <FontFamily>Tahoma</FontFamily>
+                          <FontSize>8pt</FontSize>
+                          <Format>#,0;(#,0)</Format>
+                        </Style>
+                        <ChartAxisTitle>
+                          <Caption />
+                          <Style>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </ChartAxisTitle>
+                        <ChartMajorGridLines>
+                          <Style>
+                            <Border>
+                              <Color>Gainsboro</Color>
+                            </Border>
+                          </Style>
+                        </ChartMajorGridLines>
+                        <ChartMinorGridLines>
+                          <Style>
+                            <Border>
+                              <Color>Gainsboro</Color>
+                              <Style>Dotted</Style>
+                            </Border>
+                          </Style>
+                        </ChartMinorGridLines>
+                        <ChartMajorTickMarks>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                          </Style>
+                        </ChartMajorTickMarks>
+                        <ChartMinorTickMarks>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                          </Style>
+                          <Length>0.5</Length>
+                        </ChartMinorTickMarks>
+                        <CrossAt>NaN</CrossAt>
+                        <Minimum>NaN</Minimum>
+                        <Maximum>NaN</Maximum>
+                        <ChartAxisScaleBreak>
+                          <Style />
+                        </ChartAxisScaleBreak>
+                      </ChartAxis>
+                      <ChartAxis Name="Secondary">
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                          </Border>
+                          <FontFamily>Tahoma</FontFamily>
+                          <FontSize>8pt</FontSize>
+                        </Style>
+                        <ChartAxisTitle>
+                          <Caption>軸のタイトル</Caption>
+                          <Style>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </ChartAxisTitle>
+                        <ChartMajorGridLines>
+                          <Style>
+                            <Border>
+                              <Color>Gainsboro</Color>
+                            </Border>
+                          </Style>
+                        </ChartMajorGridLines>
+                        <ChartMinorGridLines>
+                          <Style>
+                            <Border>
+                              <Color>Gainsboro</Color>
+                              <Style>Dotted</Style>
+                            </Border>
+                          </Style>
+                        </ChartMinorGridLines>
+                        <ChartMajorTickMarks>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                          </Style>
+                        </ChartMajorTickMarks>
+                        <ChartMinorTickMarks>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                          </Style>
+                          <Length>0.5</Length>
+                        </ChartMinorTickMarks>
+                        <CrossAt>NaN</CrossAt>
+                        <Location>Opposite</Location>
+                        <Minimum>NaN</Minimum>
+                        <Maximum>NaN</Maximum>
+                        <ChartAxisScaleBreak>
+                          <Style />
+                        </ChartAxisScaleBreak>
+                      </ChartAxis>
+                    </ChartValueAxes>
+                    <Style>
+                      <BackgroundColor>#e6eefc</BackgroundColor>
+                      <BackgroundGradientType>None</BackgroundGradientType>
+                    </Style>
+                  </ChartArea>
+                </ChartAreas>
+                <ChartTitles>
+                  <ChartTitle Name="Default">
+                    <Caption>=MIN(Fields!StartTime.Value) &amp; " - " &amp; MAX(Fields!StartTime.Value)</Caption>
+                    <Style>
+                      <BackgroundGradientType>None</BackgroundGradientType>
+                      <FontFamily>メイリオ</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextAlign>General</TextAlign>
+                      <VerticalAlign>Top</VerticalAlign>
+                    </Style>
+                  </ChartTitle>
+                </ChartTitles>
+                <Palette>Custom</Palette>
+                <ChartCustomPaletteColors>
+                  <ChartCustomPaletteColor>#4c68a2</ChartCustomPaletteColor>
+                  <ChartCustomPaletteColor>#b5dddf</ChartCustomPaletteColor>
+                  <ChartCustomPaletteColor>#7292cc</ChartCustomPaletteColor>
+                  <ChartCustomPaletteColor>#89bcc5</ChartCustomPaletteColor>
+                  <ChartCustomPaletteColor>#c4d5f3</ChartCustomPaletteColor>
+                  <ChartCustomPaletteColor>#c6c595</ChartCustomPaletteColor>
+                  <ChartCustomPaletteColor>#87acf3</ChartCustomPaletteColor>
+                  <ChartCustomPaletteColor>#7b9291</ChartCustomPaletteColor>
+                  <ChartCustomPaletteColor>#a8c4ec</ChartCustomPaletteColor>
+                  <ChartCustomPaletteColor>#a49ed4</ChartCustomPaletteColor>
+                </ChartCustomPaletteColors>
+                <ChartBorderSkin>
+                  <ChartBorderSkinType>Emboss</ChartBorderSkinType>
+                  <Style>
+                    <BackgroundColor>Gray</BackgroundColor>
+                    <BackgroundGradientType>None</BackgroundGradientType>
+                    <Color>White</Color>
+                  </Style>
+                </ChartBorderSkin>
+                <ChartNoDataMessage Name="NoDataMessage">
+                  <Caption>使用できるデータはありません</Caption>
+                  <Style>
+                    <BackgroundGradientType>None</BackgroundGradientType>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>General</TextAlign>
+                    <VerticalAlign>Top</VerticalAlign>
+                  </Style>
+                </ChartNoDataMessage>
+                <DataSetName>MemoryAssignInfo</DataSetName>
+                <Top>19.05217mm</Top>
+                <Left>9.38774mm</Left>
+                <Height>61.64167mm</Height>
+                <Width>290.89999mm</Width>
+                <ZIndex>14</ZIndex>
+                <Visibility>
+                  <ToggleItem>txtMemoryAssign</ToggleItem>
+                </Visibility>
+                <Style>
+                  <Border>
+                    <Color>#7292cc</Color>
+                    <Style>Solid</Style>
+                    <Width>2pt</Width>
+                  </Border>
+                  <BackgroundColor>#c6daf8</BackgroundColor>
+                  <BackgroundGradientType>TopBottom</BackgroundGradientType>
+                  <BackgroundGradientEndColor>#e6eefc</BackgroundGradientEndColor>
+                </Style>
+              </Chart>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
             <Top>368.73974mm</Top>
             <Left>6.62269mm</Left>
-            <Height>264.05633mm</Height>
+            <Height>335.84661mm</Height>
             <Width>357.07244mm</Width>
             <ZIndex>3</ZIndex>
             <Style>
@@ -10832,7 +11267,7 @@ FROM sys.dm_os_sys_info</CommandText>
               </Tablix>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>642.77455mm</Top>
+            <Top>725.32455mm</Top>
             <Left>6.62269mm</Left>
             <Height>20.90208mm</Height>
             <Width>437.81986mm</Width>
@@ -10864,7 +11299,7 @@ FROM sys.dm_os_sys_info</CommandText>
             </Style>
           </Rectangle>
         </ReportItems>
-        <Height>669.38321mm</Height>
+        <Height>752.57663mm</Height>
         <Style>
           <Border>
             <Style>None</Style>
